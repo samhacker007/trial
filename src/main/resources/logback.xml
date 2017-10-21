@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!-- <Pattern>%d{HH:mm:ss.SSS} LQY's TEST [%thread] %-5level %logger{36} ::: %msg%n</Pattern> -->
+            <Pattern>%msg%n</Pattern>            
+        </encoder>
+    </appender>
+
+    <logger name="trial" level="DEBUG"/>
+
+    <root level="LOG">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>
