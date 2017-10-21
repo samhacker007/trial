@@ -7,16 +7,16 @@ import org.slf4j.LoggerFactory;
 
 import trial.transaction.sample1.api.Operation;
 import trial.transaction.sample1.api.Transaction;
-import trial.transaction.sample1.api.TransactionGenerator;
-import trial.transaction.sample1.iml.TransactionGenerators;
+import trial.transaction.sample1.api.TransactionBuilder;
+import trial.transaction.sample1.iml.TransactionBuilders;
 
 
-public class ETLTransactionGenerator extends TransactionGenerator{
+public class ETLTransactionBuilder extends TransactionBuilder{
 	
-	static private Logger log = LoggerFactory.getLogger(ETLTransactionGenerator.class); 
+	static private Logger log = LoggerFactory.getLogger(ETLTransactionBuilder.class); 
 
-	public ETLTransactionGenerator() {
-		super(TransactionGenerators.ETLTransactionGenerator.getName());
+	public ETLTransactionBuilder() {
+		super(TransactionBuilders.ETLTransactionBuilder.getName());
 	}
 
 	@Override

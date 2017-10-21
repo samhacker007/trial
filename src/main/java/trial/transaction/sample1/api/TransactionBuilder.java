@@ -2,6 +2,9 @@ package trial.transaction.sample1.api;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import lombok.Getter;
 
 /**
@@ -14,12 +17,16 @@ import lombok.Getter;
  * @author liuqiyun
  *
  */
-public abstract class TransactionGenerator {
+public abstract class TransactionBuilder {
+
+	Transaction transaction = null;
+
+	static private Logger log = LoggerFactory.getLogger(TransactionBuilder.class);
 
 	@Getter
 	String name;
 
-	public TransactionGenerator(String name) {
+	public TransactionBuilder(String name) {
 		this.name = name;
 	}
 
@@ -28,15 +35,26 @@ public abstract class TransactionGenerator {
 	 * 
 	 * @return
 	 */
-	public Transaction generateTransaction() {
+	public void buildTransactionBody() {
+		log.info(this.getName() + " : buildTransactionBody()");
 		if (isUncompletedTransactionExist())
-			return getUncompletedTransactions().get(0);
-		
-		Transaction trasaction = generateNewTransactions();
-		trasaction.setGenerationTime(System.currentTimeMillis());
-		trasaction.constructNameWithGenerationTime();
-		
-		return trasaction;
+			transaction = getUncompletedTransactions().get(0);
+
+		transaction = generateNewTransactions();
+	}
+
+	public void buildTransactionNameWithGT() {
+		log.info(this.getName() + " : buildTransactionNameWithGT()");
+		if (isUncompletedTransactionExist())
+			return;
+
+		transaction.setGenerationTime(System.currentTimeMillis());
+		transaction.constructNameWithGenerationTime();
+	}
+
+	public Transaction buildTransaction() {
+		log.info(this.getName() + " : buildTransaction()");
+		return transaction;
 	}
 
 	/**
