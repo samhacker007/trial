@@ -5,4 +5,5 @@
 lib/
 target/  
 test-output/ 
+/test-output/ 
 /target/
