@@ -1,4 +1,8 @@
 #过滤文件夹
+.classpath
+.project
+.settings/
 lib/
 target/  
 test-output/ 
+/target/
